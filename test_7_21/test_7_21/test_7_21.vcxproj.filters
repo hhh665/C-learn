@@ -18,5 +18,8 @@
     <ClCompile Include="define.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="zhizhen.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

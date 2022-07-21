@@ -21,16 +21,16 @@
 //	printf("%p", &a);
 //	return 0;
 //}
-struct Stu
-{
-	char name[20];
-	int age;
-	char sex[5];
-	char id[12];
-};
-int main()
-{
-	struct Stu s = { "zhangsan", 20, "nan", "20211001155" };
-	printf("%s %d %s %s", s.name, s.age, s.sex, s.id);
-	return 0;
-}
+//struct Stu
+//{
+//	char name[20];
+//	int age;
+//	char sex[5];
+//	char id[12];
+//};
+//int main()
+//{
+//	struct Stu s = { "zhangsan", 20, "nan", "20211001155" };
+//	printf("%s %d %s %s", s.name, s.age, s.sex, s.id);
+//	return 0;
+//}
