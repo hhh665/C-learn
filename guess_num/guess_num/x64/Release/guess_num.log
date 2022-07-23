@@ -1,7 +1,7 @@
 ﻿  guess_num.c
   正在生成代码
-  2 of 10 functions (20.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  3 of 10 functions (30.0%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   guess_num.vcxproj -> D:\编程学习\c-language-learning\guess_num\x64\Release\guess_num.exe
