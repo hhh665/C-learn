@@ -37,23 +37,31 @@
 //    return 0;
 //}
 
-#include <stdio.h>
+//#include <stdio.h>
+//int main()
+//{
+//	int i = 0;
+//	for (i = 0; i <= 100000; i++) // 范围
+//	{
+//		int j = 0;
+//		int sum = 0;
+//		for (j = 10; j <= 10000; j *= 10) // 取下每一位 用模10除10的方法 
+//		{
+//			sum += (i / j) * (i % j);
+//		}
+//		if (sum == i)
+//		{
+//			printf("%d ", i);
+//		}
+//
+//	}
+//	return 0;
+//}
+
 int main()
 {
-	int i = 0;
-	for (i = 0; i <= 100000; i++) // 范围
-	{
-		int j = 0;
-		int sum = 0;
-		for (j = 10; j <= 10000; j *= 10) // 取下每一位 用模10除10的方法 
-		{
-			sum += (i / j) * (i % j);
-		}
-		if (sum == i)
-		{
-			printf("%d ", i);
-		}
+	int a = 0;
+	scanf("%d", &a);
 
-	}
 	return 0;
 }
