@@ -63,6 +63,7 @@ int main()
 			Sortcontact(&con);
 			break;
 		case EXIT:
+			Destorycontact(&con);
 			printf("рямкЁЖ\n");
 			break;
 		default:

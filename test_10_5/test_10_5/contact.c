@@ -2,19 +2,75 @@
 
 #include "contact.h"
 
+//void Initcontact(struct Contact* pc)
+//{
+//	assert(pc);
+//	pc->sz = 0;
+//	memset(pc->data, 0, MAX * sizeof(struct Peoinfo));
+//}
+
 void Initcontact(struct Contact* pc)
 {
 	assert(pc);
+	pc->data = (struct Peoinfo*)malloc(DEFAULT_SZ * sizeof(struct Peoinfo));
+	if (pc->data == NULL)
+	{
+		perror("Initcontact():");
+		return;
+	}
 	pc->sz = 0;
-	memset(pc->data, 0, MAX * sizeof(struct Peoinfo));
+	pc->capacity = DEFAULT_SZ;
+}
+
+//void Addcontact(struct Contact* pc)
+//{
+//	assert(pc);
+//	if (pc->sz == MAX)
+//	{
+//		printf("通讯录已满，无法添加数据\n");
+//		return;
+//	}
+//	printf("请输入姓名：\n");
+//	scanf("%s", pc->data[pc->sz].name);
+//	printf("请输入性别：\n");
+//	scanf("%s", pc->data[pc->sz].sex);
+//	printf("请输入电话：\n");
+//	scanf("%s", pc->data[pc->sz].tele);
+//	printf("请输入年龄：\n");
+//	scanf("%d", &(pc->data[pc->sz].age));
+//	printf("请输入地址：\n");
+//	scanf("%s", pc->data[pc->sz].addr);
+//
+//	pc->sz++;
+//	printf("添加联系人成功\n");
+//}
+
+int check_capacity(struct Contact* pc)
+{
+	if (pc->sz == pc->capacity)
+	{
+		struct Contact* ptr = (struct Contact*)realloc(pc->data, (pc->capacity + INC_SZ) * sizeof(struct Peoinfo));
+		if (ptr != NULL)
+		{
+			pc->data = ptr;
+			pc->capacity += INC_SZ;
+			printf("增容成功\n");
+		}
+		else
+		{
+			perror("Addcontact():");
+			return 0;
+		}
+	}
+	else
+		return 1;
 }
 
 void Addcontact(struct Contact* pc)
 {
 	assert(pc);
-	if (pc->sz == MAX)
+	if (0 == check_capacity(pc))
 	{
-		printf("通讯录已满，无法添加数据\n");
 		return;
 	}
 	printf("请输入姓名：\n");
@@ -32,6 +88,14 @@ void Addcontact(struct Contact* pc)
 	printf("添加联系人成功\n");
 }
 
+void Destorycontact(struct Contact* pc)
+{
+	free(pc->data);
+	pc->data = NULL;
+	pc->sz = 0;
+	pc->capacity = 0;
+}
+
 static int FindByName(const struct Contact* pc, char* name)
 {
 	int i = 0;
@@ -43,7 +107,6 @@ static int FindByName(const struct Contact* pc, char* name)
 		}
 	}
 	return -1;
-
 }
 
 void Delcontact(struct Contact* pc)
@@ -115,7 +178,7 @@ void Modifycontact(struct Contact* pc)
 	}
 }
 
-void Showcontact(struct Contact* pc)
+void Showcontact(const struct Contact* pc)
 {
 	int i = 0;
 	printf("%-20s\t%-5s\t%-12s\t%-5s\t%-30s\n", "姓名", "性别", "电话", "年龄", "地址");
