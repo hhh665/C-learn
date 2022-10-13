@@ -9,6 +9,27 @@
 //	memset(pc->data, 0, MAX * sizeof(struct Peoinfo));
 //}
 
+int check_capacity(struct Contact* pc);
+
+void Loadcontact(struct Contact* pc)
+{
+	FILE* pfg = fopen("data.txt", "rb");
+	if (pfg == NULL)
+	{
+		perror("Loadcontact:");
+		return;
+	}
+	struct Peoinfo tmp = { 0 };
+	while (fread(&tmp, sizeof(struct Peoinfo), 1, pfg))
+	{
+		check_capacity(pc);
+		pc->data[pc->sz] = tmp;
+		pc->sz++;
+	}
+	fclose(pfg);
+	pfg = NULL;
+}
+
 void Initcontact(struct Contact* pc)
 {
 	assert(pc);
@@ -207,6 +228,23 @@ void Sortcontact(struct Contact* pc)
 {
 	qsort(pc->data, pc->sz, sizeof(struct Peoinfo), Cmp_ByName);
 	printf("≈≈–ÚÕÍ≥…\n");
+}
+
+void Savecontact(struct Contact* pc)
+{
+	FILE* pf = fopen("data.txt", "wb");
+	if (pf == NULL)
+	{
+		perror("Savecontact:");
+		return;
+	}
+	int i = 0;
+	for (i = 0; i < pc->sz; i++)
+	{
+		fwrite(pc->data+i, sizeof(struct Peoinfo), 1, pf);
+	}
+	fclose(pf);
+	pf = NULL;
 }
 
 

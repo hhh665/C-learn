@@ -34,6 +34,7 @@ int main()
 	int n = 0;
 	struct Contact con;
 	Initcontact(&con);
+	Loadcontact(&con);
 	do
 	{
 		menu();
@@ -63,6 +64,8 @@ int main()
 			Sortcontact(&con);
 			break;
 		case EXIT:
+			Savecontact(&con);
+			printf("保存成功\n");
 			Destorycontact(&con);
 			printf("已退出\n");
 			break;

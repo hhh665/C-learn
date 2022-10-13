@@ -29,6 +29,7 @@ struct Contact
 	int capacity;
 };
 
+void Loadcontact(struct Contact* pc);
 
 void Initcontact(struct Contact* pc);
 
@@ -47,6 +48,7 @@ void Showcontact(const struct Contact* pc);
 void Clearcontact(struct Contact* pc);
 
 void Sortcontact(struct Contact* pc);
+
 
 
 
