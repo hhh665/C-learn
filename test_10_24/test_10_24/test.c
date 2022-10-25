@@ -56,88 +56,81 @@
 
 
 //·½°¸Ò»
-//void rotate(int* nums, int numsSize, int k) {
-//    int i = 0;
-//    if (k == 0 || numsSize == 1 || numsSize == k)
-//    {
-//        printf("[");
-//        for (i = 0; i < numsSize; i++)
-//        {
-//            printf("%d", nums[i]);
-//            if (i < numsSize - 1)
-//            {
-//                printf(",");
-//            }
-//        }
-//        printf("]");
-//    }
-//    else
-//    {
-//        while (numsSize < k)
-//        {
-//            k = k - numsSize;
-//        }
-//        int arr[k];
-//        for (i = 0; i < k; i++)
-//        {
-//            arr[i] = nums[numsSize - k + i];
-//        }
-//        for (i = numsSize - 1; i >= k; i--)
-//        {
-//            nums[i] = nums[i - k];
-//        }
-//        for (i = 0; i < k; i++)
-//        {
-//            nums[i] = arr[i];
-//        }
-//        printf("[");
-//        for (i = 0; i < numsSize; i++)
-//        {
-//            printf("%d", nums[i]);
-//            if (i < numsSize - 1)
-//            {
-//                printf(",");
-//            }
-//        }
-//        printf("]");
-//    }
-//}
-
-void rotate(int* nums, int numsSize, int k)
-{
-    int* p = (int*)malloc((2 * numsSize ) * sizeof(int));
-    if (p == NULL)
-    {
-        return;
-    }
-    p = nums;
+void rotate(int* nums, int numsSize, int k) {
     int i = 0;
-    for (i = 0; i < numsSize - k; i++)
+    if (k == 0 || numsSize == 1 || numsSize == k)
     {
-        p[i+numsSize] = p[i];
-    }
-    printf("[");
-    for (i = numsSize - k; i < 2 * numsSize - k; i++)
-    {
-        printf("%d", p[i]);
-        if (i < 2 * numsSize - k - 1)
+        printf("[");
+        for (i = 0; i < numsSize; i++)
         {
-            printf(",");
+            printf("%d", nums[i]);
+            if (i < numsSize - 1)
+            {
+                printf(",");
+            }
         }
+        printf("]");
     }
-    printf("]"); 
-    free(p);
-    p = NULL;
+    else
+    {
+        while (numsSize < k)
+        {
+            k = k - numsSize;
+        }
+        int arr[k];
+        for (i = 0; i < k; i++)
+        {
+            arr[i] = nums[numsSize - k + i];
+        }
+        for (i = numsSize - 1; i >= k; i--)
+        {
+            nums[i] = nums[i - k];
+        }
+        for (i = 0; i < k; i++)
+        {
+            nums[i] = arr[i];
+        }
+    //    printf("[");
+    //    for (i = 0; i < numsSize; i++)
+    //    {
+    //        printf("%d", nums[i]);
+    //        if (i < numsSize - 1)
+    //        {
+    //            printf(",");
+    //        }
+    //    }
+    //    printf("]");
+    //}
 }
 
-int main()
-{
-	int arr[7] = { 1,2,3,4,5,6,7 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	int k = 3;
-    rotate(arr, sz, k);
-	return 0;
-}
+//void rotate(int* nums, int numsSize, int k)
+//{
+//    int* p = (int*)malloc((2 * numsSize - k) * sizeof(int));
+//    if (p == NULL)
+//    {
+//        return;
+//    }
+//    p = nums;
+//    int i = 0;
+//    for (i = 0; i < numsSize - k; i++)
+//    {
+//        p[i+numsSize] = p[i];
+//    }
+//    printf("[");
+//    for (i = numsSize - k; i < 2 * numsSize - k; i++)
+//    {
+//        printf("%d", p[i]);
+//        if (i < 2 * numsSize - k - 1)
+//        {
+//            printf(",");
+//        }
+//    }
+//    printf("]"); 
+//    free(p);
+//    p = NULL;
+//}
+//
+
 
 //int main()
 //{
@@ -148,3 +141,14 @@ int main()
 //	printf("%d", *(p + 12));
 //	return 0;
 //}
+
+
+
+int main()
+{
+	int arr[7] = { 1,2,3,4,5,6,7 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int k = 3;
+	rotate(arr, sz, k);
+	return 0;
+}
